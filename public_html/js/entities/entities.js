@@ -56,6 +56,11 @@ update: function() {
             this.vel.y *= -1;
             me.audio.play("paddle-sfx");
         }
+        if(collision) {
+            if(collision.type === "brick") {
+                this.vel.y *= -1;
+            }
+        }
     }
     
     collision = this.updateMovement();
@@ -82,6 +87,11 @@ game.BrickEntity = me.ObjectEntity.extend ({
     settings.spritewidth = "32";
     settings.spriteheight = "16";
     this.parent(x, y, settings);
+
+this.type="brick";
+this.collidable = true;
+
+
 },
 
 update: function() {}
